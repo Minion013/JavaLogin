@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Homepage</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="http://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+</head>
+<body class="container py-5 h-100 d-flex justify-content-center">
+    <div class="alert alert-success"  th:if="${success}" role="alert" data-th-text="#{label.lang.loginSuccess}">
+    </div>
+    <div class="container"  th:if="${success}">
+      <p th:text="|#{label.lang.name}  ${user.name}|" />
+      <p th:text="|#{label.lang.username} ${user.userName}|" />
+      <p th:text="|#{label.lang.role} ${user.role}|" />
+    </div>
+    <form action="/manager" method="post" th:if="${user.role != 'USER'}">
+      <button type="submit" data-th-text="#{label.lang.restricted}"></button>
+    </form>
+    <br />
+    <form action="/logout" method="post">
+      <button class="btn btn-outline-dark btn-lg m-5" type="submit" data-th-text="#{label.lang.logout}"></button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+    <head> 
+        <title>Spring MVC Login</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container py-5 h-100 d-flex justify-content-center">
+            <p data-th-text="#{label.chooseLang}"></p>
+            <span>
+                <a href="/?language=en" data-th-text="#{label.lang.en}"></a>
+                <a href="/?language=ch" data-th-text="#{label.lang.ch}"></a>
+            </span>
+        </div>
+
+        <form class="container py-5 h-100 d-flex justify-content-center" action="/login" method="post">
+            <div class="alert alert-danger" th:if="${error}" role="alert" data-th-text="#{label.lang.error}">
+            </div>
+            <div class="alert alert-dark" th:if="${logout}" role="alert" data-th-text="#{label.lang.logoutSuccess}">
+            </div>
+            <h2 class="fw-bold mb-2 text-uppercase" data-th-text="#{label.lang.login}"></h2>
+            <div class="form-outline form-white mb-4">
+                <label class="form-label" for="UsernameID" data-th-text="#{label.lang.username}"></label>
+                <input type="text" name="username" id="UsernameID" class="form-control form-control-lg" />
+            </div>
+            <div class="form-outline form-white mb-4">
+                <label class="form-label" for="PasswordID" data-th-text="#{label.lang.password}"></label>
+                <input type="password" name="password" id="PasswordID" class="form-control form-control-lg" />
+            </div>
+            <br /> 
+            <button class="btn btn-outline-light btn-lg m-5" type="submit" data-th-text="#{label.lang.login}"></button>
+        </form>
+    </body>
+</html>
