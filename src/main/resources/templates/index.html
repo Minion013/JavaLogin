@@ -1,23 +1,25 @@
 <!DOCTYPE HTML>
 <html>
     <head> 
-        <title>Spring MVC Login</title> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
     </head>
-    <body>
-        <div class="container py-5 h-100 d-flex justify-content-center">
-            <p data-th-text="#{label.chooseLang}"></p>
+    <body class="d-flex align-items-center justify-content-center container flex-column lead" style="height: 800px;">
+        <div>
+            <p data-th-text="#{label.chooseLang}" class="box w-100"></p>
             <span>
                 <a href="/?language=en" data-th-text="#{label.lang.en}"></a>
                 <a href="/?language=ch" data-th-text="#{label.lang.ch}"></a>
             </span>
         </div>
-
-        <form class="container py-5 h-100 d-flex justify-content-center" action="/login" method="post">
+        <br />
+        <form action="/login" method="post" class="box w-100 items-center justify-content-center" >
             <div class="alert alert-danger" th:if="${error}" role="alert" data-th-text="#{label.lang.error}">
             </div>
             <div class="alert alert-dark" th:if="${logout}" role="alert" data-th-text="#{label.lang.logoutSuccess}">
@@ -31,8 +33,7 @@
                 <label class="form-label" for="PasswordID" data-th-text="#{label.lang.password}"></label>
                 <input type="password" name="password" id="PasswordID" class="form-control form-control-lg" />
             </div>
-            <br /> 
-            <button class="btn btn-outline-light btn-lg m-5" type="submit" data-th-text="#{label.lang.login}"></button>
+            <button class="btn btn-outline-dark btn-lg m-5" type="submit" data-th-text="#{label.lang.login}"></button>
         </form>
     </body>
 </html>

@@ -18,6 +18,7 @@ public class UserController {
      * @param locale
      * @return
      */
+
     @RequestMapping("/")
     public String index() {
         return "index";
@@ -25,8 +26,11 @@ public class UserController {
 
     @RequestMapping("/manager")
     public String manager(HttpSession session, ModelMap modelMap) {
+        if (session.getAttribute("username") == null) {
+            return "redirect:/";
+        }
         User user = userRepo.findUserByUserName(session.getAttribute("username").toString());
-        if (user != null && user.getRole().equalsIgnoreCase("MANAGER")) {
+        if (user.getRole().equalsIgnoreCase("MANAGER")) {
             return "manager";
         } else {
             modelMap.put("error", "Invalid Account");
@@ -68,6 +72,9 @@ public class UserController {
 
     @RequestMapping("/home")
     public String home(HttpSession session, ModelMap modelMap) {
+        if (session.getAttribute("username") == null) {
+            return "redirect:/";
+        }
         String userName = session.getAttribute("username").toString();
         User user = userRepo.findUserByUserName(userName);
         modelMap.put("user", user);
